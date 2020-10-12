@@ -11,16 +11,14 @@ namespace RobotsVsDinosaurs
         //member variables
         public string type;
         public int health;
-        public int powerLevel;
         public int energy;
         public int attackPower;
 
         //CTOR
-        public Dinosaur(string type, int health, int powerLevel, int energy, int attackPower)
+        public Dinosaur(string type, int health, int energy, int attackPower)
         {
             this.type = type;
             this.health = health;
-            this.powerLevel = powerLevel;
             this.energy = energy;
             this.attackPower = attackPower;
         }

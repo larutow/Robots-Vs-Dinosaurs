@@ -9,22 +9,19 @@ namespace RobotsVsDinosaurs
     class Battlefield
     {
         //member variables
+        public Fleet robots;
+        public Herd dinosaurs;
         
         //ctor
         public Battlefield()
         {
-            
+            robots = new Fleet();
+            dinosaurs = new Herd();
         }
 
         //member methods
-        public void CreateHerd()
-        {
-            Dinosaur dinosaur1 = new Dinosaur()
-        }
+        
 
-        public void CreateFleet()
-        {
-
-        }
+        
     }
 }

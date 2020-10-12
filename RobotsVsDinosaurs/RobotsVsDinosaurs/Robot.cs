@@ -12,7 +12,7 @@ namespace RobotsVsDinosaurs
         public string name;
         public int health;
         public int powerLevel;
-        public Weapon weapon = new Weapon();
+        public Weapon weapon;
 
         //constructor
         public Robot(string name, int health, int powerLevel, Weapon weapon)
