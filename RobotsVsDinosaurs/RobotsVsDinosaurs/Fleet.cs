@@ -11,11 +11,13 @@ namespace RobotsVsDinosaurs
     {
         //member variables
         public List<Robot> fleet;
+        public bool alive;
         
         //ctor
         public Fleet()
         {
             fleet = new List<Robot>();
+            alive = true;
             Weapon sword = new Weapon("sword", 10);
             Weapon blaster = new Weapon("blaster", 15);
             Weapon knife = new Weapon("knife", 5);
@@ -33,6 +35,23 @@ namespace RobotsVsDinosaurs
         {
             fleet.Add(robot);
         }
-        
+
+        public void aliveStatus()
+        {
+            foreach (Robot robo in fleet)
+            {
+                alive = false;
+                if (robo.health == 0)
+                {
+                    alive = false;
+                }
+                else if (robo.health > 0)
+                {
+                    alive = true;
+                    break;
+                }
+            }   
+        }
+
     }
 }

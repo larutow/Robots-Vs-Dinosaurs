@@ -20,7 +20,15 @@ namespace RobotsVsDinosaurs
         }
 
         //member methods
-        
+        public void doBattle(Fleet robots, Herd dinosaurs)
+        {
+            do
+            {
+
+                robots.aliveStatus();
+                dinosaurs.aliveStatus();
+            } while (robots.alive && dinosaurs.alive);
+        }
 
         
     }
