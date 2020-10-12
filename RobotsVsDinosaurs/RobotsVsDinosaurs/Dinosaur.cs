@@ -26,7 +26,18 @@ namespace RobotsVsDinosaurs
 
         public void Attack(Robot targetRobot)
         {
-            targetRobot.health -= attackPower;
+            Console.WriteLine(type + " attacks " + targetRobot);
+            if (targetRobot.health < attackPower)
+            {
+                targetRobot.health = 0;
+                Console.WriteLine(targetRobot.name + " has fallen in battle");
+            }
+            else
+            {
+                targetRobot.health -= attackPower;
+                Console.WriteLine(targetRobot.name + " takes " + attackPower + " damage and has " + targetRobot.health + " HP remaining");
+            }
+
         }
     }
 }
