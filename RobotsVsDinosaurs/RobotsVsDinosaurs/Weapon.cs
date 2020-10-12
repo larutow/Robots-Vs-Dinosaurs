@@ -11,12 +11,14 @@ namespace RobotsVsDinosaurs
         //member variables
         public string weaponType;
         public int attackPower;
+        public int uniqueId;
 
         //ctor
-        public Weapon(string weaponType, int attackPower)
+        public Weapon(string weaponType, int attackPower, int uniqueId)
         {
             this.weaponType = weaponType;
             this.attackPower = attackPower;
+            this.uniqueId = uniqueId;
         }
         //member methods
 
