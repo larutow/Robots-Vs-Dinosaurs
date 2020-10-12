@@ -18,7 +18,7 @@ namespace RobotsVsDinosaurs
         {
             fleet = new List<Robot>();
             alive = true;
-            Weapon sword = new Weapon("sword", 10);
+            Weapon sword = new Weapon("sword", 15);
             Weapon blaster = new Weapon("blaster", 15);
             Weapon knife = new Weapon("knife", 5);
             Robot robot1 = new Robot("Megatron", 50, 100, sword);

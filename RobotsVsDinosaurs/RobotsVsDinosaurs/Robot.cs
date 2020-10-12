@@ -21,12 +21,37 @@ namespace RobotsVsDinosaurs
             this.health = health;
             this.powerLevel = powerLevel;
             this.weapon = weapon;
+            
 
         }
         //member methods
+
+
+        public Dinosaur attackTarget(Herd herd)
+        {
+            Dinosaur targetedDinosaur = herd.herd[0];
+            // make dinosaurs psychically target the robot in the fleet with the least amount of health that is greater than 0
+            int leastHealth = 1;
+
+            foreach (Dinosaur dinosaur in herd.herd)
+            {
+                if (dinosaur.health > 0 && dinosaur.health <= leastHealth)
+                {
+                    leastHealth = dinosaur.health;
+                    targetedDinosaur = dinosaur;
+                }
+                else if (dinosaur.health > 0 && dinosaur.health > leastHealth)
+                {
+                    leastHealth = dinosaur.health;
+                    targetedDinosaur = dinosaur;
+                }
+            }
+
+            return targetedDinosaur;
+        }
         public void Attack(Dinosaur targetDinosaur)
         {
-            Console.WriteLine(name + " attacks " + targetDinosaur);
+            Console.WriteLine(name + " attacks " + targetDinosaur.type);
             if (targetDinosaur.health < weapon.attackPower)
             {
                 targetDinosaur.health = 0;

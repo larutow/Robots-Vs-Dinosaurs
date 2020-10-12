@@ -17,8 +17,8 @@ namespace RobotsVsDinosaurs
         {
             herd = new List<Dinosaur>();
             alive = true;
-            Dinosaur trex = new Dinosaur("trex", 60, 100, 20);
-            Dinosaur raptor = new Dinosaur("raptor", 45, 100, 4);
+            Dinosaur trex = new Dinosaur("trex", 60, 100, 15);
+            Dinosaur raptor = new Dinosaur("raptor", 45, 100, 6);
             Dinosaur triceratops = new Dinosaur("triceratops", 40, 100, 8);
             addDino(trex);
             addDino(raptor);

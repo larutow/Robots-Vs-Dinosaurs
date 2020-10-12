@@ -20,14 +20,46 @@ namespace RobotsVsDinosaurs
         }
 
         //member methods
-        public void doBattle(Fleet robots, Herd dinosaurs)
+
+        public void VictoryMessage()
+        {
+            if(robots.alive && !dinosaurs.alive)
+            {
+                Console.WriteLine("Robots win!");
+            }else if (dinosaurs.alive && !robots.alive)
+            {
+                Console.WriteLine("Dinosaurs win!");
+            }
+        }
+        public void DoBattle(Fleet robots, Herd dinosaurs)
         {
             do
             {
+                    
+                for (int i = 0; i < robots.fleet.Count; i++)
+                {
 
-                robots.aliveStatus();
-                dinosaurs.aliveStatus();
+                    Robot dinoTarget = dinosaurs.herd[i].attackTarget(robots);
+                    if(dinosaurs.herd[i].health > 0)
+                    {
+                       dinosaurs.herd[i].Attack(dinoTarget);
+                    }
+                    robots.aliveStatus();
+
+                    Dinosaur robotTarget = robots.fleet[i].attackTarget(dinosaurs);
+                    if (robots.fleet[i].health > 0)
+                    {
+                       robots.fleet[i].Attack(robotTarget);
+                    }
+                    dinosaurs.aliveStatus();
+
+                    Console.WriteLine("");
+                    
+                }
+ 
             } while (robots.alive && dinosaurs.alive);
+
+            VictoryMessage();
         }
 
         
