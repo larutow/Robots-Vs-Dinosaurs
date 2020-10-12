@@ -40,18 +40,18 @@ namespace RobotsVsDinosaurs
                 {
 
                     Robot dinoTarget = dinosaurs.herd[i].AttackTarget(robots);
-                    if(dinosaurs.herd[i].health > 0)
-                    {
-                       dinosaurs.herd[i].Attack(dinoTarget);
-                    }
+                    
+                    //tryAttack method for dinosaurs & robots
+                    
+                    dinosaurs.herd[i].TryAttack(dinoTarget);
                     robots.AliveStatus();
 
                     Dinosaur robotTarget = robots.fleet[i].AttackTarget(dinosaurs);
-                    if (robots.fleet[i].health > 0)
-                    {
-                       robots.fleet[i].Attack(robotTarget);
-                    }
+                    
+                    robots.fleet[i].TryAttack(robotTarget);
                     dinosaurs.AliveStatus();
+
+
 
                     Console.WriteLine("");
                     

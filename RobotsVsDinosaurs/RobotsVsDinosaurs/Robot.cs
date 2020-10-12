@@ -64,5 +64,32 @@ namespace RobotsVsDinosaurs
             }
         }
 
+        public void TryAttack(Dinosaur targetDinosaur)
+        {
+            if (health > 0 && powerLevel > 0)
+            {
+                Console.WriteLine(name + " attacks " + targetDinosaur.type +" with a " + weapon.weaponType);
+                if (powerLevel >= 10)
+                {
+                    powerLevel -= 10;
+                }
+                else if (powerLevel < 10)
+                {
+                    powerLevel = 0;
+                    Console.WriteLine(name + " is out of power and can no longer attack");
+                }
+                if (targetDinosaur.health <= weapon.attackPower)
+                {
+                    targetDinosaur.health = 0;
+                    Console.WriteLine(targetDinosaur.type + " has fallen in battle");
+                }
+                else
+                {
+                    targetDinosaur.health -= weapon.attackPower;
+                    Console.WriteLine(targetDinosaur.type + " takes " + weapon.attackPower + " damage and has " + targetDinosaur.health + " HP remaining");
+                }
+            }
+        }
+
     }
 }
