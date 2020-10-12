@@ -25,18 +25,18 @@ namespace RobotsVsDinosaurs
             Robot robot2 = new Robot("Starscream", 40, 100, blaster);
             Robot robot3 = new Robot("Cyclonus",30, 100, knife);
 
-            addToFleet(robot1);
-            addToFleet(robot2);
-            addToFleet(robot3);
+            AddToFleet(robot1);
+            AddToFleet(robot2);
+            AddToFleet(robot3);
         }
 
         //member methods
-        public void addToFleet(Robot robot)
+        public void AddToFleet(Robot robot)
         {
             fleet.Add(robot);
         }
 
-        public void aliveStatus()
+        public void AliveStatus()
         {
             foreach (Robot robo in fleet)
             {

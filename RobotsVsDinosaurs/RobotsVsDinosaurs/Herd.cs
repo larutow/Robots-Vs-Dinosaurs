@@ -20,17 +20,17 @@ namespace RobotsVsDinosaurs
             Dinosaur trex = new Dinosaur("trex", 60, 100, 15);
             Dinosaur raptor = new Dinosaur("raptor", 45, 100, 6);
             Dinosaur triceratops = new Dinosaur("triceratops", 40, 100, 8);
-            addDino(trex);
-            addDino(raptor);
-            addDino(triceratops);
+            AddDino(trex);
+            AddDino(raptor);
+            AddDino(triceratops);
         }
         //member methods
-        public void addDino(Dinosaur dinosaur)
+        public void AddDino(Dinosaur dinosaur)
         {
             herd.Add(dinosaur);
         }
 
-        public void aliveStatus()
+        public void AliveStatus()
         {
             foreach(Dinosaur dino in herd)
             {

@@ -24,7 +24,7 @@ namespace RobotsVsDinosaurs
         }
         //member methods
 
-        public Robot attackTarget(Fleet fleet)
+        public Robot AttackTarget(Fleet fleet)
         {
             Robot targetedRobot = fleet.fleet[0];
             // make dinosaurs psychically target the robot in the fleet with the least amount of health that is greater than 0
@@ -48,7 +48,7 @@ namespace RobotsVsDinosaurs
         public void Attack(Robot targetRobot)
         {
             Console.WriteLine(type + " attacks " + targetRobot.name);
-            if (targetRobot.health < attackPower)
+            if (targetRobot.health <= attackPower)
             {
                 targetRobot.health = 0;
                 Console.WriteLine(targetRobot.name + " has fallen in battle");

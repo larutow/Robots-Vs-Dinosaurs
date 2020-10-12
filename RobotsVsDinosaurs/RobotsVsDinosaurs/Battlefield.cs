@@ -39,19 +39,19 @@ namespace RobotsVsDinosaurs
                 for (int i = 0; i < robots.fleet.Count; i++)
                 {
 
-                    Robot dinoTarget = dinosaurs.herd[i].attackTarget(robots);
+                    Robot dinoTarget = dinosaurs.herd[i].AttackTarget(robots);
                     if(dinosaurs.herd[i].health > 0)
                     {
                        dinosaurs.herd[i].Attack(dinoTarget);
                     }
-                    robots.aliveStatus();
+                    robots.AliveStatus();
 
-                    Dinosaur robotTarget = robots.fleet[i].attackTarget(dinosaurs);
+                    Dinosaur robotTarget = robots.fleet[i].AttackTarget(dinosaurs);
                     if (robots.fleet[i].health > 0)
                     {
                        robots.fleet[i].Attack(robotTarget);
                     }
-                    dinosaurs.aliveStatus();
+                    dinosaurs.AliveStatus();
 
                     Console.WriteLine("");
                     
