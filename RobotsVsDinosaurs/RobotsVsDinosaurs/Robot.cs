@@ -9,10 +9,10 @@ namespace RobotsVsDinosaurs
     class Robot
     {
         //member variables
-        string name;
-        int health;
-        int powerLevel;
-        Weapon weapon = new Weapon();
+        public string name;
+        public int health;
+        public int powerLevel;
+        public Weapon weapon = new Weapon();
 
         //constructor
         public Robot(string name, int health, int powerLevel, Weapon weapon)

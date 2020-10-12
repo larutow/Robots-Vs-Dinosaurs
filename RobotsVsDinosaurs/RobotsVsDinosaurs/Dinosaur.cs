@@ -9,16 +9,20 @@ namespace RobotsVsDinosaurs
     class Dinosaur
     {
         //member variables
-        string type;
-        int health;
-        int powerLevel;
-        int energy;
-        int attackPower;
+        public string type;
+        public int health;
+        public int powerLevel;
+        public int energy;
+        public int attackPower;
 
         //CTOR
-        public Dinosaur()
+        public Dinosaur(string type, int health, int powerLevel, int energy, int attackPower)
         {
-
+            this.type = type;
+            this.health = health;
+            this.powerLevel = powerLevel;
+            this.energy = energy;
+            this.attackPower = attackPower;
         }
         //member methods
     }
