@@ -17,7 +17,7 @@ namespace RobotsVsDinosaurs
         
         
 
-        //CTOR
+        //C
         public Dinosaur(string type, int health, int energy, int attackPower)
         {
             this.type = type;

@@ -30,21 +30,37 @@ namespace RobotsVsDinosaurs
             dinosaurs.Add(dinosaur);
         }
 
+        public void RemoveDino(Dinosaur dinosaur)
+        {
+            dinosaurs.Remove(dinosaur);
+        }
+
+        public void Attack(Fleet robotFleet, Random rng)
+        {
+            int attackDinoIndex = rng.Next(0, dinosaurs.Count);
+            if(dinosaurs.Count > 0)
+            {
+            Robot dinoTarget = dinosaurs[attackDinoIndex].AttackTarget(robotFleet);
+
+            //tryAttack method for dinosaurs & robots
+
+            dinosaurs[attackDinoIndex].TryAttack(dinoTarget, rng);
+            robotFleet.AliveStatus();
+            }
+        }
+
         public void AliveStatus()
         {
-            foreach(Dinosaur dino in dinosaurs)
+            int numOfDinosAlive = dinosaurs.Count;
+            
+            for(int i = 0; i < numOfDinosAlive; i++)
             {
-                alive = false;
-                if(dino.health == 0)
+                if(dinosaurs[i].health == 0)
                 {
-                    alive = false;
-                }else if(dino.health > 0)
-                {
-                    alive = true;
+                    RemoveDino(dinosaurs[i]);
                     break;
                 }
             }
-            
         }
     }
 }

@@ -69,22 +69,24 @@ namespace RobotsVsDinosaurs
 
             return targetedDinosaur;
         }
-        public void Attack(Dinosaur targetDinosaur)
-        {
-            Console.WriteLine(name + " attacks " + targetDinosaur.type);
-            if (targetDinosaur.health <= weapon.attackPower)
-            {
-                targetDinosaur.health = 0;
-                Console.WriteLine(targetDinosaur.type + " has fallen in battle");
-                Console.WriteLine("");
-            }
-            else
-            {
-                targetDinosaur.health -= weapon.attackPower;
-                Console.WriteLine(targetDinosaur.type + " takes " + weapon.attackPower + " damage and has "+targetDinosaur.health+" HP remaining");
-                Console.WriteLine("");
-            }
-        }
+        
+        //deprecated attack function
+        //public void Attack(Dinosaur targetDinosaur)
+        //{
+        //    Console.WriteLine(name + " attacks " + targetDinosaur.type);
+        //    if (targetDinosaur.health <= weapon.attackPower)
+        //    {
+        //        targetDinosaur.health = 0;
+        //        Console.WriteLine(targetDinosaur.type + " has fallen in battle");
+        //        Console.WriteLine("");
+        //    }
+        //    else
+        //    {
+        //        targetDinosaur.health -= weapon.attackPower;
+        //        Console.WriteLine(targetDinosaur.type + " takes " + weapon.attackPower + " damage and has "+targetDinosaur.health+" HP remaining");
+        //        Console.WriteLine("");
+        //    }
+        //}
 
         public void TryAttack(Dinosaur targetDinosaur)
         {

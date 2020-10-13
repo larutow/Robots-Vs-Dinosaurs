@@ -51,19 +51,31 @@ namespace RobotsVsDinosaurs
             arsenal.Add(weapon);
         }
 
+        public void RemoveRobo(Robot robot) {
+            robots.Remove(robot);
+        }
+
+        public void Attack(Herd dinosaurHerd, Random rng)
+        {
+            int attackRoboIndex = rng.Next(0, robots.Count);
+            if (robots.Count > 0)
+            {
+                Dinosaur roboTarget = robots[attackRoboIndex].AttackTarget(dinosaurHerd);
+
+                //tryAttack method for dinosaurs & robots
+
+                robots[attackRoboIndex].TryAttack(roboTarget);
+                dinosaurHerd.AliveStatus();
+            }
+        }
 
         public void AliveStatus()
         {
             foreach (Robot robo in robots)
             {
-                alive = false;
                 if (robo.health == 0)
                 {
-                    alive = false;
-                }
-                else if (robo.health > 0)
-                {
-                    alive = true;
+                    RemoveRobo(robo);
                     break;
                 }
             }   

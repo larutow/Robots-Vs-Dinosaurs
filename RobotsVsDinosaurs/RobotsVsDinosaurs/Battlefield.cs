@@ -24,10 +24,10 @@ namespace RobotsVsDinosaurs
 
         public void VictoryMessage()
         {
-            if(robotFleet.alive && !dinosaurHerd.alive)
+            if(robotFleet.robots.Count > 0)
             {
                 Console.WriteLine("Robots win!");
-            }else if (dinosaurHerd.alive && !robotFleet.alive)
+            }else if (dinosaurHerd.dinosaurs.Count > 0)
             {
                 Console.WriteLine("Dinosaurs win!");
             }
@@ -36,25 +36,10 @@ namespace RobotsVsDinosaurs
         {
             do
             {
-                    
-                for (int i = 0; i < robotFleet.robots.Count; i++)
-                {
+                dinosaurHerd.Attack(robotFleet, rng);
+                robotFleet.Attack(dinosaurHerd, rng);
 
-                    Robot dinoTarget = dinosaurHerd.dinosaurs[i].AttackTarget(robotFleet);
-                    
-                    //tryAttack method for dinosaurs & robots
-                    
-                    dinosaurHerd.dinosaurs[i].TryAttack(dinoTarget, rng);
-                    robotFleet.AliveStatus();
-
-                    Dinosaur robotTarget = robotFleet.robots[i].AttackTarget(dinosaurHerd);
-                    
-                    robotFleet.robots[i].TryAttack(robotTarget);
-                    dinosaurHerd.AliveStatus();
-                    
-                }
- 
-            } while (robotFleet.alive && dinosaurHerd.alive);
+            } while (robotFleet.robots.Count > 0 && dinosaurHerd.dinosaurs.Count > 0);
 
             VictoryMessage();
         }
