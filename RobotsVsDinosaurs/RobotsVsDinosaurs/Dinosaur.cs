@@ -13,6 +13,9 @@ namespace RobotsVsDinosaurs
         public int health;
         public int energy;
         public int attackPower;
+        public DinoAttack[] movePool = new DinoAttack[4];
+        public Random rng = new Random();
+        public static object syncLock = new object();
 
         //CTOR
         public Dinosaur(string type, int health, int energy, int attackPower)
@@ -21,8 +24,28 @@ namespace RobotsVsDinosaurs
             this.health = health;
             this.energy = energy;
             this.attackPower = attackPower;
+            PopulateMovePool();
+            
         }
         //member methods
+
+        public void PopulateMovePool()
+        {
+            movePool[0] = new DinoAttack("claw attack", 8);
+            movePool[1] = new DinoAttack("bite attack", 12);
+            movePool[2] = new DinoAttack("tail whip", 7);
+            movePool[3] = new DinoAttack("charge attack", 15);
+         
+        }
+
+        public DinoAttack ChooseAttack()
+        {
+            lock (syncLock)
+            {
+                int attackIndex = rng.Next(0, movePool.Length);
+                return movePool[attackIndex];
+            }
+        }
 
         public Robot AttackTarget(Fleet fleet)
         {
@@ -34,7 +57,7 @@ namespace RobotsVsDinosaurs
             {
                 if (robot.health > 0 && robot.health <= leastHealth)
                 {
-                    targetedRobot= robot;
+                    targetedRobot = robot;
                 } else if(robot.health > 0 && robot.health > leastHealth)
                 {
                     leastHealth = robot.health;
@@ -66,7 +89,9 @@ namespace RobotsVsDinosaurs
         {
             if(health > 0 && energy > 0)
             {
-                Console.WriteLine(type + " attacks " + targetRobot.name);
+                DinoAttack attackType = ChooseAttack();
+                
+                Console.WriteLine(type + " attacks " + targetRobot.name + " with a " + attackType.type);
                 if (energy >= 10)
                 {
                     energy -= 10;
@@ -74,16 +99,19 @@ namespace RobotsVsDinosaurs
                 {
                     energy = 0;
                     Console.WriteLine("The " + type + " is out of energy and can no longer attack");
+                    Console.WriteLine("");
                 }
-                if (targetRobot.health <= attackPower)
+                if (targetRobot.health <= attackType.attackPower)
                 {
                     targetRobot.health = 0;
                     Console.WriteLine(targetRobot.name + " has fallen in battle");
+                    Console.WriteLine("");
                 }
                 else
                 {
-                    targetRobot.health -= attackPower;
+                    targetRobot.health -= attackType.attackPower;
                     Console.WriteLine(targetRobot.name + " takes " + attackPower + " damage and has " + targetRobot.health + " HP remaining");
+                    Console.WriteLine("");
                 }
             }
         }

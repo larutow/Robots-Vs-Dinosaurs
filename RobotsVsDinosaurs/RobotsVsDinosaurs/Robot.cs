@@ -76,11 +76,13 @@ namespace RobotsVsDinosaurs
             {
                 targetDinosaur.health = 0;
                 Console.WriteLine(targetDinosaur.type + " has fallen in battle");
+                Console.WriteLine("");
             }
             else
             {
                 targetDinosaur.health -= weapon.attackPower;
                 Console.WriteLine(targetDinosaur.type + " takes " + weapon.attackPower + " damage and has "+targetDinosaur.health+" HP remaining");
+                Console.WriteLine("");
             }
         }
 
@@ -97,16 +99,19 @@ namespace RobotsVsDinosaurs
                 {
                     powerLevel = 0;
                     Console.WriteLine(name + " is out of power and can no longer attack");
+                    Console.WriteLine("");
                 }
                 if (targetDinosaur.health <= weapon.attackPower)
                 {
                     targetDinosaur.health = 0;
                     Console.WriteLine(targetDinosaur.type + " has fallen in battle");
+                    Console.WriteLine("");
                 }
                 else
                 {
                     targetDinosaur.health -= weapon.attackPower;
                     Console.WriteLine(targetDinosaur.type + " takes " + weapon.attackPower + " damage and has " + targetDinosaur.health + " HP remaining");
+                    Console.WriteLine("");
                 }
             }
         }
