@@ -11,6 +11,7 @@ namespace RobotsVsDinosaurs
         //member variables
         public Fleet robotFleet;
         public Herd dinosaurHerd;
+        public Random rng = new Random();
         
         //ctor
         public Battlefield()
@@ -43,7 +44,7 @@ namespace RobotsVsDinosaurs
                     
                     //tryAttack method for dinosaurs & robots
                     
-                    dinosaurHerd.dinosaurs[i].TryAttack(dinoTarget);
+                    dinosaurHerd.dinosaurs[i].TryAttack(dinoTarget, rng);
                     robotFleet.AliveStatus();
 
                     Dinosaur robotTarget = robotFleet.robots[i].AttackTarget(dinosaurHerd);

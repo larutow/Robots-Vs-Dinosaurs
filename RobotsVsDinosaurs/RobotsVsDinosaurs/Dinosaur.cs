@@ -14,8 +14,8 @@ namespace RobotsVsDinosaurs
         public int energy;
         public int attackPower;
         public DinoAttack[] movePool = new DinoAttack[4];
-        public Random rng = new Random();
-        public static object syncLock = new object();
+        
+        
 
         //CTOR
         public Dinosaur(string type, int health, int energy, int attackPower)
@@ -38,13 +38,12 @@ namespace RobotsVsDinosaurs
          
         }
 
-        public DinoAttack ChooseAttack()
+        public DinoAttack ChooseAttack(Random rng)
         {
-            lock (syncLock)
-            {
-                int attackIndex = rng.Next(0, movePool.Length);
-                return movePool[attackIndex];
-            }
+            
+           int attackIndex = rng.Next(0, movePool.Length);
+           return movePool[attackIndex];
+            
         }
 
         public Robot AttackTarget(Fleet fleet)
@@ -85,11 +84,11 @@ namespace RobotsVsDinosaurs
 
         //}
 
-        public void TryAttack(Robot targetRobot)
+        public void TryAttack(Robot targetRobot, Random rng)
         {
             if(health > 0 && energy > 0)
             {
-                DinoAttack attackType = ChooseAttack();
+                DinoAttack attackType = ChooseAttack(rng);
                 
                 Console.WriteLine(type + " attacks " + targetRobot.name + " with a " + attackType.type);
                 if (energy >= 10)
