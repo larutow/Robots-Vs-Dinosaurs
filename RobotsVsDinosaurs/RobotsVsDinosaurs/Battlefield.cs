@@ -9,55 +9,51 @@ namespace RobotsVsDinosaurs
     class Battlefield
     {
         //member variables
-        public Fleet robots;
-        public Herd dinosaurs;
+        public Fleet robotFleet;
+        public Herd dinosaurHerd;
         
         //ctor
         public Battlefield()
         {
-            robots = new Fleet();
-            dinosaurs = new Herd();
+            robotFleet = new Fleet();
+            dinosaurHerd = new Herd();
         }
 
         //member methods
 
         public void VictoryMessage()
         {
-            if(robots.alive && !dinosaurs.alive)
+            if(robotFleet.alive && !dinosaurHerd.alive)
             {
                 Console.WriteLine("Robots win!");
-            }else if (dinosaurs.alive && !robots.alive)
+            }else if (dinosaurHerd.alive && !robotFleet.alive)
             {
                 Console.WriteLine("Dinosaurs win!");
             }
         }
-        public void DoBattle(Fleet robots, Herd dinosaurs)
+        public void DoBattle()
         {
             do
             {
                     
-                for (int i = 0; i < robots.fleet.Count; i++)
+                for (int i = 0; i < robotFleet.robots.Count; i++)
                 {
 
-                    Robot dinoTarget = dinosaurs.herd[i].AttackTarget(robots);
+                    Robot dinoTarget = dinosaurHerd.dinosaurs[i].AttackTarget(robotFleet);
                     
                     //tryAttack method for dinosaurs & robots
                     
-                    dinosaurs.herd[i].TryAttack(dinoTarget);
-                    robots.AliveStatus();
+                    dinosaurHerd.dinosaurs[i].TryAttack(dinoTarget);
+                    robotFleet.AliveStatus();
 
-                    Dinosaur robotTarget = robots.fleet[i].AttackTarget(dinosaurs);
+                    Dinosaur robotTarget = robotFleet.robots[i].AttackTarget(dinosaurHerd);
                     
-                    robots.fleet[i].TryAttack(robotTarget);
-                    dinosaurs.AliveStatus();
-
-
-
-                    Console.WriteLine("");
+                    robotFleet.robots[i].TryAttack(robotTarget);
+                    dinosaurHerd.AliveStatus();
                     
                 }
  
-            } while (robots.alive && dinosaurs.alive);
+            } while (robotFleet.alive && dinosaurHerd.alive);
 
             VictoryMessage();
         }

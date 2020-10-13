@@ -9,13 +9,13 @@ namespace RobotsVsDinosaurs
     class Herd
     {
         //member variables
-        public List<Dinosaur> herd;
+        public List<Dinosaur> dinosaurs;
         public bool alive;
 
         //ctor
         public Herd()
         {
-            herd = new List<Dinosaur>();
+            dinosaurs = new List<Dinosaur>();
             alive = true;
             Dinosaur trex = new Dinosaur("trex", 60, 100, 15);
             Dinosaur raptor = new Dinosaur("raptor", 45, 100, 6);
@@ -27,12 +27,12 @@ namespace RobotsVsDinosaurs
         //member methods
         public void AddDino(Dinosaur dinosaur)
         {
-            herd.Add(dinosaur);
+            dinosaurs.Add(dinosaur);
         }
 
         public void AliveStatus()
         {
-            foreach(Dinosaur dino in herd)
+            foreach(Dinosaur dino in dinosaurs)
             {
                 alive = false;
                 if(dino.health == 0)

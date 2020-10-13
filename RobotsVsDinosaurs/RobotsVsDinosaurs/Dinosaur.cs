@@ -26,11 +26,11 @@ namespace RobotsVsDinosaurs
 
         public Robot AttackTarget(Fleet fleet)
         {
-            Robot targetedRobot = fleet.fleet[0];
+            Robot targetedRobot = fleet.robots[0];
             // make dinosaurs psychically target the robot in the fleet with the least amount of health that is greater than 0
             int leastHealth = 1;
             
-            foreach (Robot robot in fleet.fleet)
+            foreach (Robot robot in fleet.robots)
             {
                 if (robot.health > 0 && robot.health <= leastHealth)
                 {

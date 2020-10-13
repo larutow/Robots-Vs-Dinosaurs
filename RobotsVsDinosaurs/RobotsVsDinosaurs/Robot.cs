@@ -13,27 +13,47 @@ namespace RobotsVsDinosaurs
         public int health;
         public int powerLevel;
         public Weapon weapon;
+        public Random rng = new Random();
 
         //constructor
-        public Robot(string name, int health, int powerLevel, Weapon weapon)
+        public Robot(string name, int health, int powerLevel, List<Weapon> arsenal)
         {
             this.name = name;
             this.health = health;
             this.powerLevel = powerLevel;
-            this.weapon = weapon;
+            weapon = ChooseWeapon(arsenal);
             
 
         }
         //member methods
         
+        public Weapon ChooseWeapon(List<Weapon> arsenal)
+        {
+            Weapon chosenWeapon = new Weapon("",0,0);
+            
+            int weaponIndex = rng.Next(1, arsenal.Count);
+
+            chosenWeapon.weaponType = arsenal[weaponIndex].weaponType;
+            chosenWeapon.attackPower = arsenal[weaponIndex].attackPower;
+            chosenWeapon.uniqueId = arsenal[weaponIndex].uniqueId;
+            RemoveWeaponFromArsenal(arsenal,weaponIndex);
+
+            return chosenWeapon;
+
+        }
+
+        public void RemoveWeaponFromArsenal(List<Weapon> arsenal, int weaponIndex)
+        {
+            arsenal.Remove(arsenal[weaponIndex]);
+        }
 
         public Dinosaur AttackTarget(Herd herd)
         {
-            Dinosaur targetedDinosaur = herd.herd[0];
+            Dinosaur targetedDinosaur = herd.dinosaurs[0];
             // make dinosaurs psychically target the robot in the fleet with the least amount of health that is greater than 0
             int leastHealth = 1;
 
-            foreach (Dinosaur dinosaur in herd.herd)
+            foreach (Dinosaur dinosaur in herd.dinosaurs)
             {
                 if (dinosaur.health > 0 && dinosaur.health <= leastHealth)
                 {
